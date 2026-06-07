@@ -768,6 +768,51 @@ footer {
   border: 1px solid var(--border);
 }
 
+.announcement-form-section .form-group,
+#login-modal .form-group,
+#registration-modal .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.announcement-form-section label,
+#login-modal label,
+#registration-modal label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.announcement-form-section input,
+.announcement-form-section textarea,
+#login-modal input,
+#registration-modal input {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.announcement-form-section input:focus,
+.announcement-form-section textarea:focus,
+#login-modal input:focus,
+#registration-modal input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(83, 75, 174, 0.12);
+}
+
+.announcement-form-section textarea {
+  resize: vertical;
+  min-height: 72px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
 .announcement-dates {
   display: flex;
   gap: 12px;
