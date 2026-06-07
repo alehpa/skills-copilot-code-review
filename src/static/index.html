@@ -17,6 +17,10 @@
       <h2>Extracurricular Activities</h2>
       <div id="user-controls">
         <div id="user-status">
+          <button id="manage-announcements-button" class="icon-button hidden" aria-label="Manage Announcements">
+            <span class="announce-icon">📢</span>
+            <span>Announcements</span>
+          </button>
           <button id="login-button" class="icon-button">
             <span class="user-icon">👤</span>
             <span>Login</span>
@@ -134,8 +138,50 @@
       </div>
     </div>
 
-    <div class="announcement-banner">
-      📢 Activity registration is open until the end of the month. Don't lose your spot!
+    <!-- Dynamic Announcement Banner -->
+    <div id="announcement-banner" class="announcement-banner hidden" role="region" aria-label="Announcements"></div>
+
+    <!-- Announcements Management Modal -->
+    <div id="announcements-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="announcements-modal-title">
+      <div class="modal-content announcements-modal-content">
+        <button class="close-announcements-modal modal-close-btn" aria-label="Close announcements manager">&times;</button>
+        <h3 id="announcements-modal-title">📢 Manage Announcements</h3>
+
+        <!-- Add / Edit Form -->
+        <div class="announcement-form-section">
+          <h4 id="announcement-form-title">Add New Announcement</h4>
+          <form id="announcement-form">
+            <input type="hidden" id="announcement-edit-id" value="" />
+            <div class="form-group">
+              <label for="announcement-message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="announcement-message" rows="3" required placeholder="Enter announcement message…" aria-required="true"></textarea>
+            </div>
+            <div class="announcement-dates">
+              <div class="form-group">
+                <label for="announcement-start">Start Date <span class="optional-label">(optional)</span></label>
+                <input type="datetime-local" id="announcement-start" />
+              </div>
+              <div class="form-group">
+                <label for="announcement-expiry">Expiration Date <span aria-hidden="true">*</span></label>
+                <input type="datetime-local" id="announcement-expiry" required aria-required="true" />
+              </div>
+            </div>
+            <div class="announcement-form-actions">
+              <button type="button" id="announcement-cancel-edit" class="btn-secondary hidden">Cancel Edit</button>
+              <button type="submit" id="announcement-submit-btn" class="btn-primary">Add Announcement</button>
+            </div>
+          </form>
+          <div id="announcement-form-message" class="hidden message"></div>
+        </div>
+
+        <!-- Existing Announcements List -->
+        <div class="announcement-list-section">
+          <h4>Existing Announcements</h4>
+          <div id="announcements-list" aria-live="polite">
+            <p class="loading-text">Loading…</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="app.js"></script>
